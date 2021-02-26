@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import Game from '../models/gameOfThrones.js'
 import Rule from '../models/trafficRules.js'
 
-mongoose.connect('mongodb://localhost:27017/finalflashcards', {
+mongoose.connect('mongodb://localhost:27017/reactflash', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })

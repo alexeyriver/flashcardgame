@@ -9,14 +9,15 @@ import fs from 'fs'
 import morgan from 'morgan'
 import sessionFile from 'session-file-store'
 import User from './models/user.js'
+import Game from './models/gameOfThrones.js'
+import Rule from './models/trafficRules.js'
+
 mongoose.connect('mongodb://localhost:27017/reactflash', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const FileStore = sessionFile(session)
 dotenv.config()
-
 const port = 4000
 const app = express()
-
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors())
@@ -47,7 +48,6 @@ app.post('/login', async (req, res) => {
  else return res.json({status:false})
 })
 
-
 app.post('/signup', async (req, res) => {
 console.log(req.body);
   const { email, password, name } = req.body
@@ -61,14 +61,13 @@ console.log(req.body);
   }
   else res.json({ status: false })
 
-
-
-
 })
 
-app.get('/secret', (req, res, next) => {
-  
-  res.end()
+app.get('/card', async (req, res, next) => {
+  let game = await Game.find()
+  let rule = await Rule.find()
+
+  res.json({game, rule})
 })
 
 app.get('/logout', (req, res, next) => {

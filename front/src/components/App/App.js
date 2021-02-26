@@ -4,8 +4,8 @@ import Main from '../Main/Main'
 import Signin from '../Login/Signin'
 import Logout from '../Login/Logout'
 import {useSelector} from 'react-redux'
-import Secret from '../Secret/Secret'
-import PrivateRoute from '../Privateroute/Privateroute'
+import Signup from "../Login/Signup"
+
 
 function App() {
 
@@ -24,9 +24,7 @@ function App() {
         {isAuthenticated && <li>
           <Link to="/logout">LogOut</Link>
         </li>}
-        <li>
-          <Link to="/secret">Secret</Link>
-        </li>
+        
       </ul>
 
 
@@ -37,9 +35,9 @@ function App() {
         <Route path="/logout">
           <Logout />
         </Route>
-        <PrivateRoute path="/secret">
-          <Secret />
-        </PrivateRoute>
+        <Route path="/signup">
+          <Signup />
+        </Route>
         <Route path="/login">
           <Signin />
         </Route>

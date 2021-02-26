@@ -43,7 +43,7 @@ app.post('/login', async (req, res) => {
   if (user && user.password == password) {
     // req.session.user = user
     // console.log(req.session);
-    return res.json({status:200})
+    return res.json({status:200,user:user.name})
   }
  else return res.json({status:false})
 })
@@ -56,8 +56,8 @@ console.log(req.body);
   if (!check) {
     let user = await new User({ name, email, password })
     await user.save()
-    // req.session.user = user
-    res.json({ status: true })
+    //  req.session.user = user
+    res.json({ status: true , user:user.name})
   }
   else res.json({ status: false })
 

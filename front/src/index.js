@@ -19,7 +19,7 @@ const store = createStore(
           ...state, isAuthenticated: false
         }
       case 'LOAD_QUESTION':
-        return {...state, question: [...state.question, action.payload]}  /////???
+        return {...state, question: action.payload}  /////???
       default: return state;
     }
   },

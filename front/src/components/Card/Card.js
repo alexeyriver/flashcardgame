@@ -6,8 +6,6 @@ import { useEffect ,useState} from "react"
 function Cards(props) {
 
   const dispatch = useDispatch()
-
-
 // получаем значения из store (аналогия getState())
 // const cards = useSelector(store => store.cards)
 
@@ -15,13 +13,13 @@ useEffect(() => {
   fetch('http://localhost:4000/card')
     .then(res => res.json())
     // вариант 1
-    .then(data => console.log(data))//dispatch({type: 'LOAD_QUESTION', payload:data }))
+    .then(data => dispatch({type: 'LOAD_QUESTION', payload:data }))
 
     // варинат 2
     // .then(data => dispatch(loadPeopleAC(data)))
 }, [])
 
-const question = useSelector(state => state)
+const question = useSelector(state => state.question)
 
 
 console.log(question);

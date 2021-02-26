@@ -24,13 +24,13 @@ function Signin(props) {
         password
       })
     })
-
-    if (response.status === 200) {
+let resp = await response.json()
+    if (resp.status === 200) {
       dispatch({ type: 'AUT_SUCCESS' })
-      return history.push('/secret')
+      return history.push('/')
     }
     // dispatch({ type: 'AUT_BAD' })
-    return setError('Try it')
+   else return setError('Неверный логин или пароль')
   }
 
   function handleChange({ target: { name, value } }) {

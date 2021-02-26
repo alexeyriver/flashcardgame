@@ -20,7 +20,7 @@ function App() {
             <Link to="/login">SignIn</Link>
           </li>}
         {!isAuthenticated && <li>
-          <Link to="/signup">SignUn</Link>
+          <Link to="/signup">SignUp</Link>
         </li>}
         {isAuthenticated && <li>
           <Link to="/logout">LogOut</Link>

@@ -32,7 +32,7 @@ function Signup(props) {
 let respback  = await response.json()
 console.log(respback);
     if (respback.status ===true) {
-      dispatch({ type: 'AUT_SUCCESS' })
+      dispatch({ type: 'AUT_SUCCESS' ,payload: respback.user})
       return history.push('/')
     }
     // dispatch({ type: 'AUT_BAD' })

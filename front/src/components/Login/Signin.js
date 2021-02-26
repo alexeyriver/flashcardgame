@@ -26,7 +26,7 @@ function Signin(props) {
     })
 let resp = await response.json()
     if (resp.status === 200) {
-      dispatch({ type: 'AUT_SUCCESS' })
+      dispatch({ type: 'AUT_SUCCESS', payload: resp.user})
       return history.push('/')
     }
     // dispatch({ type: 'AUT_BAD' })

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect ,useState} from "react"
-import { loadNoteAC, deleteNoteAC } from "../../redux/actionCreator"
+
 
 
 function Cards(props) {
@@ -12,14 +12,20 @@ function Cards(props) {
 // const cards = useSelector(store => store.cards)
 
 useEffect(() => {
-  fetch('http://localhost/4000/card')
+  fetch('http://localhost:4000/card')
     .then(res => res.json())
     // вариант 1
-    .then(data => dispatch({type: 'LOAD_QUESTION', payload:data }))
+    .then(data => console.log(data))//dispatch({type: 'LOAD_QUESTION', payload:data }))
 
     // варинат 2
     // .then(data => dispatch(loadPeopleAC(data)))
 }, [])
+
+const question = useSelector(state => state)
+
+
+console.log(question);
+
 
 
   return (

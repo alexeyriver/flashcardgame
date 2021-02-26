@@ -5,6 +5,7 @@ import Signin from '../Login/Signin'
 import Logout from '../Login/Logout'
 import {useSelector} from 'react-redux'
 import Signup from "../Login/Signup"
+import Card from '../Card/Card'
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
 
       <Switch>
         <Route exact path="/">
-          <Main />
+          <Card />
         </Route>
         <Route path="/logout">
           <Logout />

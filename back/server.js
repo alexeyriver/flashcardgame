@@ -64,9 +64,10 @@ console.log(req.body);
 })
 
 app.get('/card', async (req, res, next) => {
+  
   let game = await Game.find()
   let rule = await Rule.find()
-
+console.log(game,rule,'afafafas');
   res.json({game, rule})
 })
 

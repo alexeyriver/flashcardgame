@@ -12,12 +12,14 @@ const store = createStore(
     switch (action.type) {
       case 'AUT_SUCCESS':
         return {
-          isAuthenticated: true
+          ...state, isAuthenticated: true
         }
       case 'LOGOUT':
         return {
-          isAuthenticated: false
+          ...state, isAuthenticated: false
         }
+      case 'LOAD_QUESTION':
+        return {...state, question: [...state.question, action.payload]}  /////???
       default: return state;
     }
   },

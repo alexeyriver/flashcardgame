@@ -6,6 +6,7 @@ import Logout from '../Login/Logout'
 import {useSelector} from 'react-redux'
 import Signup from "../Login/Signup"
 import Card from '../Card/Card'
+import Allstat from "../Allstat/Allstat"
 
 
 function App() {
@@ -25,6 +26,10 @@ function App() {
         {isAuthenticated && <li>
           <Link to="/logout">LogOut</Link>
         </li>}
+        {isAuthenticated && <li>
+          <Link to="/allstat">AllStat</Link>
+        </li>}
+      
         
       </ul>
 
@@ -38,6 +43,12 @@ function App() {
         </Route>
         <Route path="/signup">
           <Signup />
+        </Route>
+        <Route path="/stat">
+          <Main />
+        </Route>
+        <Route path="/allstat">
+          <Allstat />
         </Route>
         <Route path="/login">
           <Signin />

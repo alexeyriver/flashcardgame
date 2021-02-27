@@ -1,10 +1,14 @@
 import React from 'react';
 import { useSelector } from "react-redux"
 
-function Main(props) {
+function Allstat(props) {
 
   const user = useSelector(state => state.user)
-
+  function Allstat() {
+    fetch('http://localhost:4000/allstat')
+  .then(allstat =>allstat.json())
+.then(data=>console.log(data))
+}
 
   return (
     <div>
@@ -17,4 +21,4 @@ function Main(props) {
   );
 }
 
-export default Main;
+export default Allstat;

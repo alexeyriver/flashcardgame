@@ -43,21 +43,21 @@ app.post('/login', async (req, res) => {
   if (user && user.password == password) {
     // req.session.user = user
     // console.log(req.session);
-    return res.json({status:200,user:user.name})
+    return res.json({status:200,user:user})
   }
  else return res.json({status:false})
 })
 
 app.post('/signup', async (req, res) => {
-console.log(req.body);
+// console.log(req.body);
   const { email, password, name } = req.body
   let check =await User.findOne({ email: email })
-  console.log(check);
+  // console.log(check);
   if (!check) {
     let user = await new User({ name, email, password })
     await user.save()
     //  req.session.user = user
-    res.json({ status: true , user:user.name})
+    res.json({ status: true , user:user})
   }
   else res.json({ status: false })
 
@@ -67,8 +67,24 @@ app.get('/card', async (req, res, next) => {
   
   let game = await Game.find()
   let rule = await Rule.find()
-console.log(game,rule,'afafafas');
+// console.log(game,rule,'afafafas');
   res.json({game, rule})
+})
+app.get('/allstat', async (req, res, next) => {
+  
+  let users = await User.find()
+  
+  res.json({users})
+})
+
+app.post('/gameover', async (req, res, next) => {
+  console.log(req.body,'dfssdfsdfd');
+  let check =await User.findOne({ email: req.body.email })
+  check.counts = req.body.counts
+  check.trueanswer= req.body.trueanswer
+  check.falseanswer= req.body.falseanswer
+  await check.save()
+  res.json({check})
 })
 
 app.get('/logout', (req, res, next) => {
